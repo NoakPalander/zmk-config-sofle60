@@ -1,4 +1,3 @@
-# New updated repo 2026 https://github.com/KeyboardHoarders/zmk-config-sofle60
 
 # Sofle Choc 60key 
 
