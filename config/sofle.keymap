@@ -28,7 +28,14 @@
         };
     };
 
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        emacs_one_shot {
+            bindings = <&sl 4>;
+            key-positions = <53 56>;
+        };
+    };
 
     behaviors {
         caps: caps {
@@ -36,6 +43,64 @@
             label = "CAPS";
             #binding-cells = <0>;
             continue-list = <POUND MINUS BACKSPACE UNDERSCORE>;
+        };
+    };
+
+    macros {
+        emacs_string_replace: emacs_replace {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SV_X) &kp SV_R &kp SV_S>, <&macro_tap>;
+
+            label = "EMACS_REPLACE";
+        };
+
+        emacs_fuzzy_find: emacs_fuzzy_find {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SV_X) &kp SV_F>, <&macro_tap>;
+
+            label = "EMACS_FUZZY_FIND";
+        };
+
+        emacs_dired: emacs_dired {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SV_X) &kp LC(SV_F)>, <&macro_tap>;
+
+            label = "EMACS_DIRED";
+        };
+
+        emacs_treemacs: emacs_treemacs {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SV_X) &kp SV_T>, <&macro_tap>;
+
+            label = "EMACS_TREEMACS";
+        };
+
+        emacs_follow_symbol: emacs_follow_symbol {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SV_X) &kp SV_R &kp SV_R>, <&macro_press>;
+
+            label = "EMACS_FOLLOW_SYMBOL";
+        };
+
+        emacs_backup_from_symbol: emacs_backup_from_symbol {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SV_X) &kp SV_R &kp SV_H>, <&macro_tap>;
+
+            label = "EMACS_BACKUP_FROM_SYMBOL";
+        };
+
+        emacs_find_references: emacs_find_references {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SV_X) &kp SV_R &kp SV_F>, <&macro_tap>;
+
+            label = "EMACS_FIND_REFERENCES";
         };
     };
 
@@ -96,7 +161,7 @@
             //                |      |       |       |      |      |  |      |      |      |       |      |
 
             bindings = <
-&kp ESCAPE        &trans  &trans      &trans        &trans        &trans                             &kp PRINTSCREEN  &trans         &trans         &trans     &trans  &trans
+&kp ESCAPE        &trans  &trans      &trans        &trans        &trans                             &kp PRINTSCREEN  &trans         &trans         &trans     &trans  &mo 3
 &kp TAB           &trans  &kp INSERT  &trans        &trans        &trans                             &trans           &trans         &kp UP         &trans     &trans  &trans
 &kp LEFT_SHIFT    &trans  &kp DELETE  &trans        &trans        &kp CAPSLOCK                       &kp BACKSPACE    &kp LEFT       &kp DOWN       &kp RIGHT  &trans  &trans
 &kp LEFT_CONTROL  &trans  &trans      &trans        &trans        &trans        &kp HOME    &kp END  &trans           &trans         &trans         &trans     &trans  &trans
@@ -126,16 +191,14 @@
             label = "System";
         };
 
-        Switch {
+        emacs {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &to 2   &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &to 3   &trans  &trans  &trans                    &to 0   &trans  &trans  &to 1   &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &trans        &trans                  &trans                                                              &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &trans        &emacs_find_references  &emacs_treemacs                                                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &emacs_string_replace  &emacs_dired  &emacs_fuzzy_find       &trans                                                              &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &trans        &trans                  &trans           &emacs_follow_symbol    &emacs_backup_from_symbol  &trans  &trans  &trans  &trans  &trans  &trans
+                &trans                 &trans        &trans                  &trans           &trans                  &trans                     &trans  &trans  &trans  &trans
             >;
-
-            label = "Switch";
         };
     };
 };
