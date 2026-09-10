@@ -103,6 +103,14 @@
 
             label = "EMACS_GOTO_LINE";
         };
+
+        emacs_switch_buffer: emacs_switch_buffer {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(SV_X) &kp SV_B>, <&macro_tap>;
+
+            label = "EMACS_SWITCH_BUFFER";
+        };
     };
 
     keymap {
@@ -194,11 +202,11 @@
 
         emacs {
             bindings = <
-&trans  &trans  &trans                 &trans        &trans                  &trans                                                              &trans  &trans  &trans  &trans            &trans  &trans
-&trans  &trans  &trans                 &trans        &emacs_find_references  &emacs_treemacs                                                     &trans  &trans  &trans  &trans            &trans  &trans
-&trans  &trans  &emacs_string_replace  &emacs_dired  &emacs_fuzzy_find       &trans                                                              &trans  &trans  &trans  &emacs_goto_line  &trans  &trans
-&trans  &trans  &trans                 &trans        &trans                  &trans           &emacs_follow_symbol    &emacs_backup_from_symbol  &trans  &trans  &trans  &trans            &trans  &trans
-                &trans                 &trans        &trans                  &trans           &trans                  &trans                     &trans  &trans  &trans  &trans
+&trans  &trans  &trans                 &trans        &trans                  &trans                                                                   &trans  &trans  &trans  &trans            &trans  &trans
+&trans  &trans  &trans                 &trans        &emacs_find_references  &emacs_treemacs                                                          &trans  &trans  &trans  &trans            &trans  &trans
+&trans  &trans  &emacs_string_replace  &emacs_dired  &emacs_fuzzy_find       &trans                                                                   &trans  &trans  &trans  &emacs_goto_line  &trans  &trans
+&trans  &trans  &trans                 &trans        &trans                  &emacs_switch_buffer  &emacs_follow_symbol    &emacs_backup_from_symbol  &trans  &trans  &trans  &trans            &trans  &trans
+                &trans                 &trans        &trans                  &trans                &trans                  &trans                     &trans  &trans  &trans  &trans
             >;
 
             label = "emacs";
