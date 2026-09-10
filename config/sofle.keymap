@@ -153,7 +153,7 @@
 &kp TAB           &kp SV_SECTION  &trans  &kp SV_ACUTE  &kp SV_LEFT_PARENTHESIS  &kp SV_RIGHT_PARENTHESIS                    &kp SV_LEFT_BRACE  &kp SV_RIGHT_BRACE  &kp SV_BACKSLASH  &kp SV_CARET         &trans   &kp F12
 &kp LEFT_SHIFT    &trans          &trans  &kp SV_TILDE  &kp SV_LESS_THAN         &kp SV_GREATER_THAN                         &kp SV_COMMA       &kp SV_DOT          &kp SV_MINUS      &kp SV_SINGLE_QUOTE  &trans   &trans
 &kp LEFT_CONTROL  &trans          &trans  &kp SV_PIPE   &kp SV_LEFT_BRACKET      &kp SV_RIGHT_BRACKET      &trans    &trans  &kp SV_EQUAL       &kp SV_PLUS         &trans            &trans               &trans   &trans
-                                  &trans  &kp LEFT_GUI  &kp LEFT_ALT             &trans                    &trans    &trans  &trans             &kp RIGHT_ALT       &kp RIGHT_GUI     &trans
+                                  &trans  &kp LEFT_GUI  &kp LEFT_ALT             &trans                    &trans    &trans  &sl 4              &kp RIGHT_ALT       &kp RIGHT_GUI     &trans
             >;
 
             label = "Lower";
@@ -174,7 +174,7 @@
 &kp TAB           &trans  &kp INSERT  &trans        &trans        &trans                             &trans           &trans         &kp UP         &trans     &trans  &trans
 &kp LEFT_SHIFT    &trans  &kp DELETE  &trans        &trans        &kp CAPSLOCK                       &kp BACKSPACE    &kp LEFT       &kp DOWN       &kp RIGHT  &trans  &trans
 &kp LEFT_CONTROL  &trans  &trans      &trans        &trans        &trans        &kp HOME    &kp END  &trans           &trans         &trans         &trans     &trans  &trans
-                          &trans      &kp LEFT_WIN  &kp LEFT_ALT  &trans        &trans      &trans   &trans           &kp RIGHT_ALT  &kp RIGHT_GUI  &trans
+                          &trans      &kp LEFT_WIN  &kp LEFT_ALT  &sl 4         &trans      &trans   &trans           &kp RIGHT_ALT  &kp RIGHT_GUI  &trans
             >;
 
             label = "Raise";
@@ -188,7 +188,7 @@
             // |        |         |         |         |         |         | RGB_TOG | |      |      |      |       |      |       |       |
             //                    |         |         |         |         |         | |      |      |      |       |      |
 
-            display-name = "adjust";
+            display-name = "system";
             bindings = <
 &to 0  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                           &none  &none  &none  &none  &none  &none
 &none  &none         &none         &none         &none         &none                                  &none  &none  &none  &none  &none  &none
@@ -197,7 +197,7 @@
                      &none         &none         &none         &none         &none             &none  &none  &none  &none  &none
             >;
 
-            label = "System";
+            label = "system";
         };
 
         emacs {
